@@ -9,7 +9,7 @@
             <center><h1>Diabetes Predictor</h1></center>
             <div class="card card-body" style="border: 1px solid black;">
                 <form class="form-horizontal" action="{% url 'predictPage' %}" method="POST">
-                    {{% csrf_token %}}
+                    {% csrf_token %}
                     <div class="form-group">
                         <input style="border: 1px solid black;" class="form-control" type="text" name="pregnancies" placeholder="Number of Pregnancies eg. 0">
                     </div>

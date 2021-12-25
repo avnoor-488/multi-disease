@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import pickle
+from disease.models import breastCancer
 import numpy as np
 from PIL import Image
 from tensorflow.keras.models import load_model
@@ -31,11 +32,42 @@ def predict(values, dic):
 
 def home(request):
     # if request.method=='POST':
+
     return render(request,'home.html')
 
 def cancerPage(request):
-    # if request.method=='POST':
-        return render(request,'breast_cancer.html')
+    if request.method=='POST':
+        radius_mean = request.POST['radius_mean']
+        texture_mean = request.POST['texture_mean']
+        perimeter_mean = request.POST['perimeter_mean']
+        area_mean = request.POST['area_mean']
+        smoothness_mean = request.POST['smoothness_mean']
+        compactness_mean = request.POST['compactness_mean']
+        concavity_mean = request.POST['concavity_mean']
+        concave_points_mean = request.POST['concave_points_mean']
+        symmetry_mean = request.POST['symmetry_mean']
+
+
+
+
+
+        data = breastCancer.objects.create(
+                                            radius_mean=radius_mean,
+                                            texture_mean=texture_mean,
+                                            perimeter_mean=perimeter_mean,
+                                            area_mean=area_mean,
+                                            smoothness_mean=smoothness_mean,
+                                            compactness_mean=compactness_mean,
+                                            concavity_mean=concavity_mean,
+                                            concave_points_mean=concave_points_mean,
+                                            symmetry_mean = symmetry_mean,
+
+
+
+
+                                            )
+        data.save()
+    return render(request,'breast_cancer.html')
 
 def heartPage(request):
     return render(request,'heart.html')
@@ -63,10 +95,10 @@ def predictPage(request):
             to_predict_list = list(map(float, list(to_predict_dict.values())))
             pred = predict(to_predict_list, to_predict_dict)
     except:
-        message = "Please enter valid Data"
-        return render(request,"home.html", message = message)
+        message = { 'msg' : "Please enter valid Data"}
+        return render(request,"home.html", message)
 
-    return render(request,'predict.html', pred = pred)
+    return render(request,'predict.html', pred)
 
 def malariapredictPage(request):
     if request.method == 'POST':

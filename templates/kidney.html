@@ -7,7 +7,7 @@
         <center><h1>Kidney Disease Predictor</h1></center>
         <div class="card card-body" style="border: 1px solid black;">
             <form class="form-horizontal" action="{% url 'predictPage' %}" method="POST">
-                {{% csrf_token %}}
+                {% csrf_token %}
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">

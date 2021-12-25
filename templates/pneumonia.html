@@ -26,7 +26,7 @@
         <div class="card card-body">
             <center><h3>Please upload the X-Ray of Person</h3></center>
             <form class="form-horizontal" action="{% url 'pneumoniapredictPage' %}" method="POST" enctype="multipart/form-data">
-                {{% csrf_token %}}
+                {% csrf_token %}
                 <center>
                 <input onchange="readURL(this);" type="file" name="image" placeholder="Upload Image">
                 <br>
