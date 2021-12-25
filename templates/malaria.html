@@ -25,7 +25,8 @@
         <center><h1>Malaria Predictor</h1></center>
         <div class="card card-body">
             <center><h3>Please upload the image of the cell</h3></center>
-            <form class="form-horizontal" action="{{ url_for('malariapredictPage') }}" method="POST" enctype="multipart/form-data">
+            <form class="form-horizontal" action="{% url 'malariapredictPage' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
                 <center>
                 <input onchange="readURL(this);" type="file" name="image" placeholder="Upload Image">
                 <br>
