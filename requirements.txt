@@ -2,8 +2,8 @@
 #certifi==2020.12.5
 #chardet==4.0.0
 Django==3.2.9
-django-crispy-forms==1.11.1
-django-recaptcha==2.0.6
+#django-crispy-forms==1.11.1
+#django-recaptcha==2.0.6
 #idna==2.10
 #pytz==2021.1
 #requests==2.25.1
@@ -16,4 +16,6 @@ django-extensions
 django-environ>=0.8.1
 Pillow
 #tensorflow
+numpy==1.21.5
+pandas
 django-import-export==2.7.0
