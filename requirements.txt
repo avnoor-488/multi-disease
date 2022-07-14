@@ -16,6 +16,6 @@ django-extensions
 django-environ>=0.8.1
 Pillow
 #tensorflow
-numpy==1.21.5
+numpy==1.22.0
 pandas
 django-import-export==2.7.0
